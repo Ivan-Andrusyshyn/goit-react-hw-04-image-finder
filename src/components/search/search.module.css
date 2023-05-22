@@ -1,0 +1,28 @@
+.form {
+  width: 1600px;
+  background-color: rgba(0, 0, 255, 0.747);
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search_btn {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  background-color: rgb(17, 187, 17);
+  color: #ffffff;
+  border: none;
+  transition: background-color 0.3s linear;
+}
+.search_btn:hover,
+.search_btn:focus {
+  background-color: rgba(17, 187, 17, 0.884);
+}
+.search_input {
+  width: 400px;
+  height: 30px;
+  border-radius: 0 5px 5px 0;
+  padding-left: 10px;
+  box-sizing: border-box;
+}

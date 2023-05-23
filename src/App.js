@@ -63,33 +63,28 @@ function App() {
   const hendlerIncrement = () => {
     setCountPage(countPage + 1);
   };
-  {
-    const closeModal = (e) => {
-      if (e.target === e.currentTarget) {
-        setIsHidden(false);
-      }
-    };
-    const openModal = (img) => {
-      setIsHidden(true);
-      setImgModal(img);
-    };
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsHidden(false);
+    }
+  };
+  const openModal = (img) => {
+    setIsHidden(true);
+    setImgModal(img);
+  };
 
-    return (
-      <div className={css.container}>
-        <Searchbar hendlerSearch={hendlerSearch} />
-        <ImageGallery fetchImg={fetchImg} openModal={openModal} />
-        {isHidden && (
-          <Modal img={imgModal} isHidden={isHidden} closeModal={closeModal} />
-        )}
-        <Loader loading={loading} />
-        {fetchImg.length > 0 && !loading && (
-          <BtnLoadMore
-            hendlerIncrement={hendlerIncrement}
-            fetchImg={fetchImg}
-          />
-        )}
-      </div>
-    );
-  }
+  return (
+    <div className={css.container}>
+      <Searchbar hendlerSearch={hendlerSearch} />
+      <ImageGallery fetchImg={fetchImg} openModal={openModal} />
+      {isHidden && (
+        <Modal img={imgModal} isHidden={isHidden} closeModal={closeModal} />
+      )}
+      <Loader loading={loading} />
+      {fetchImg.length > 0 && !loading && (
+        <BtnLoadMore hendlerIncrement={hendlerIncrement} fetchImg={fetchImg} />
+      )}
+    </div>
+  );
 }
 export { App };

@@ -23,29 +23,30 @@ function App() {
       setCountPage(1);
     }
   };
-  const takeImg = useCallback(async () => {
-    try {
-      setLoading(true);
-      const data = await ApiImg.fetchImgWithQuery(search, countPage);
-      setTimeout(() => {
-        setFetchImg((prevFetchImg) => prevFetchImg.concat(data));
-      }, 500);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
-    }
-  }, [search, countPage]);
 
   useEffect(() => {
+    const takeImg = async () => {
+      try {
+        setLoading(true);
+        const data = await ApiImg.fetchImgWithQuery(search, countPage);
+        setTimeout(() => {
+          setFetchImg((prevFetchImg) => prevFetchImg.concat(data));
+        }, 500);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      }
+    };
+
     if (!search) {
       return;
     }
 
     takeImg();
-  }, [countPage, search, takeImg]);
+  }, [search, countPage]);
   useEffect(() => {
     const handlerKeyDown = (event) => {
       if (event.key === "Escape") {
